@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>TP Animaux</title>
+</head>
+<body>
+
+    <div>
+     
+            <div>
+                <label for="name">Nom</label>
+                <input id="name">
+            </div>
+            <div>
+                <label for="type">Type</label>
+                <input id="type">
+            </div>
+            <div>
+                <label for="age">Age</label>
+                <input id="age">
+            </div>
+            <div>
+                <label for="swim">Peut-il nager ?</label>
+                <input id="swim" type="checkbox">
+            </div>
+            <button id="btn-submit">Ajouter</button>
+    
+    </div>
+
+    <h2>Liste des animaux</h2>
+    <div id="display">
+        <div id="tabAnimaux"></div>
+    </div>
+
+    <button id="btn-empty">vider</button>
+
+    <h2>Selectionnez l'animal a retirer</h2>
+    <select id="delete-select">
+        
+    </select>
+    <button>supprimer</button>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
