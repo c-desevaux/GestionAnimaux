@@ -13,11 +13,8 @@
     let btnOk = document.getElementById("btn-submit");      //on récupere le bouton valider du html
     let btnVider = document.getElementById("btn-empty");
 
-    let nbAnimaux = Animal.getNbAnimal();
     let zoo = [];                                           //defini un tableau qui va contenir nos animaux
    
-
-console.log("nombre d'animaux créer "+nbAnimaux);
 
     btnOk.addEventListener("click", ()=> {                  //On ajoute l'action qui suit le click du bouton
         
@@ -25,11 +22,9 @@ console.log("nombre d'animaux créer "+nbAnimaux);
         let ageValue = age.value;
         let swimValue = swim.checked;
         let typeValue = type.value;
-        nbAnimaux = Animal.getNbAnimal();
-        localStorage.setItem("nbAnimaux", nbAnimaux);
+        
 
-
-        zoo.push(new Animal(nbAnimaux, nameValue, typeValue, ageValue, swimValue));       //On push dans le tableau le nouvel animal qui vient d'être rentré par l'utilisateur
+        zoo.push(new Animal(Animal.getNbAnimal(), nameValue, typeValue, ageValue, swimValue));       //On push dans le tableau le nouvel animal qui vient d'être rentré par l'utilisateur
      
 
         container.innerHTML = "";                                               //On vide la div
@@ -48,10 +43,11 @@ console.log("nombre d'animaux créer "+nbAnimaux);
         resetForm();                                                            //On reset le form
 
 
+        localStorage.setItem("nbAnimaux", Animal.getNbAnimal());
 
-console.log("nombre d'animaux créer "+nbAnimaux);
+console.log("nombre d'animaux créer "+localStorage.getItem("nbAnimaux"));
         dSelect.innerHTML="";
-        for(let i=0 ; i<nbAnimaux+1 ; i++){                                               //On parcours le tableau de 0 aux nombre d'animaux créer
+        for(let i=0 ; i<(localStorage.getItem("nbAnimaux")) ; i++){                                               //On parcours le tableau de 0 aux nombre d'animaux créer
             
             let newOption = document.createElement("option");                           //Pour chaque on creer une option
             newOption.innerHTML = i;                                                    //La valeur de l'option vaut i
@@ -60,6 +56,8 @@ console.log("nombre d'animaux créer "+nbAnimaux);
         }
 
     });
+
+
 
     btnVider.addEventListener("click", ()=>{                                    //Event listener sur le bouton vider qui supprime les données d ela cléf animaux du local storage
         container.innerHTML = "";
@@ -74,6 +72,15 @@ console.log("nombre d'animaux créer "+nbAnimaux);
 
 
     displayDiv.innerHTML = localStorage.getItem("animaux");
+    dSelect.innerHTML="";
+        for(let i=0 ; i<(localStorage.getItem("nbAnimaux")) ; i++){                                               //On parcours le tableau de 0 aux nombre d'animaux créer
+            
+            let newOption = document.createElement("option");                           //Pour chaque on creer une option
+            newOption.innerHTML = i;                                                    //La valeur de l'option vaut i
+            dSelect.appendChild(newOption);
+
+        }
+
 
     //Fonction qui va clear tous les champs du formulaire
         function resetForm(){
